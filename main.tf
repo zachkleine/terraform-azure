@@ -1,9 +1,9 @@
-# provides config details for terraform test
+# provides config details for terraform
 terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>2.31.1"
+      version = "~>3.0.0"
     }
   }
 }

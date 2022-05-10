@@ -13,11 +13,11 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "test-rg"
-  location = "southcentralus"
+  name     = var.rg_name
+  location = var.location
   tags = {
     environment = "dev"
     source      = "terraform"
-    owner = "zach"
+    owner       = "zach"
   }
 }

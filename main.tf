@@ -48,7 +48,7 @@ module "vnet" {
     azurerm_resource_group.vnet_main
   ]
 }
-
+#stnardard output of vnet_id
 output "vnet_id" {
   value = module.vnet.vnet_id
 }

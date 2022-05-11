@@ -26,7 +26,7 @@ module "vnet-main" {
   source = "Azure/vnet/azurerm"
   resource_group_name = var.rg_name
   vnet_name = var.rg_name
-  address_space = var.vnet_cidr_range
+  address_space = [var.vnet_cidr_range]
   subnet_prefixes = var.subnet_prefix
   subnet_names = var.subnet_names
   nsg_ids = {}

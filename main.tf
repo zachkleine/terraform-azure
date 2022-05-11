@@ -27,13 +27,15 @@ resource "azurerm_resource_group" "vnet_main" {
 }
 
 #collection of configs that manages  
-module "vnet-main" {
+module "vnet" {
   #where module comes from 
   source = "Azure/vnet/azurerm"
+  version = "2.6.0"
   #assigns resource group based on 
   resource_group_name = azurerm_resource_group.vnet_main.name
   vnet_name = var.resource_group_name
-  address_space = [var.vnet_cidr_range]
+  #address_space expects a list string, can either be done in vars or main
+  address_space = var.vnet_cidr_range
   subnet_prefixes = var.subnet_prefix
   subnet_names = var.subnet_names
   nsg_ids = {}
@@ -41,11 +43,12 @@ module "vnet-main" {
     environment = "dev"
     costcenter = "IT"
   }
+  #resource group vnet_main must be created first
   depends_on = [
     azurerm_resource_group.vnet_main
   ]
 }
 
 output "vnet_id" {
-  value = module.vnet-main.vnet_id
+  value = module.vnet.vnet_id
 }

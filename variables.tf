@@ -1,6 +1,6 @@
-variable "rg_name" {
+variable "resource_group_name" {
     type = string
-    default = "test-rg"
+    default = "vnet-main"
 }
 
 variable "location" {
